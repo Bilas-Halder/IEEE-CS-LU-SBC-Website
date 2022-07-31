@@ -33,7 +33,7 @@
     background: linear-gradient(90deg, #276098 0%, #5c93d1 100%);
     border-radius: 50px;
     cursor: pointer;
-    z-index: 99999;
+    z-index: 20;
 }
 
 .memTooltip {
@@ -258,7 +258,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    z-index: 99999;
+    z-index: 20;
 }
 
 .socialIconBtn {
@@ -277,7 +277,7 @@
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: all 0.3s ease-in;
-    z-index: 200;
+    z-index: 11;
 }
 
 .socialIconBtn::after {
@@ -290,11 +290,11 @@
     background-color: white;
     border-radius: 3px;
     transform: rotate(45deg);
-    z-index: 201;
+    z-index: 12;
 }
 
 .socialIconBtn svg {
-    z-index: 203;
+    z-index: 13;
     margin-top: 2px;
     transition: transform 0.3s ease-in;
 }

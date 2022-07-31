@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import AchievementSection from "../components/HomePageComponents/AchievementSection";
-import BackgroundCarousel from "../components/HomePageComponents/BackgroundCarousel";
-import WelcomeSection from "../components/HomePageComponents/WelcomeSection";
-import UpcomingEvents from "../components/HomePageComponents/UpcomingEvents";
-import QuestionSection from "../components/HomePageComponents/QuestionSection";
-import Footer from "../components/HomePageComponents/Footer";
-import Header from "../components/Header/Header";
-import MemberCard from "../components/MemberCard/MemberCard";
-import DummyMembersPage from "../components/MemberCard/DummyMembersPage";
+import AchievementSection from "../../components/HomePageComponents/AchievementSection";
+import BackgroundCarousel from "../../components/HomePageComponents/BackgroundCarousel";
+import WelcomeSection from "../../components/HomePageComponents/WelcomeSection";
+import UpcomingEvents from "../../components/HomePageComponents/UpcomingEvents";
+import QuestionSection from "../../components/HomePageComponents/QuestionSection";
+import Footer from "../../components/HomePageComponents/Footer";
 
 const HomePage = () => {
 
@@ -75,7 +72,6 @@ const HomePage = () => {
             } */}
 
             <div>
-                <Header></Header>
                 <BackgroundCarousel />
                 <AchievementSection />
                 <WelcomeSection />

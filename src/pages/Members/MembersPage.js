@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import MemberCard from './MemberCard';
+import Loading from '../../components/Loading/Loading';
+import MemberCard from '../../components/MemberCard/MemberCard';
 
-const DummyMembersPage = (props) => {
+const MembersPage = (props) => {
     const [members, setMembers] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const year = '2022';
 
     // remove dummy to get actual data from database
@@ -13,8 +15,14 @@ const DummyMembersPage = (props) => {
     useEffect(() => {
         fetch(url).then(res => res.json()).then(data => {
             setMembers(data);
+            setIsLoading(false);
         });
     }, []);
+
+    if (isLoading) {
+        return <Loading />;
+    }
+
     return (
         <>
             <Container>
@@ -28,4 +36,4 @@ const DummyMembersPage = (props) => {
     );
 };
 
-export default DummyMembersPage;
+export default MembersPage;

@@ -1,0 +1,33 @@
+.loading_logo {
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: loading_logo_animation 2s ease-in-out infinite;
+}
+
+.loading_logo .img_container {
+    width: auto;
+    height: 100px;
+}
+
+.loading_logo .img_container img {
+    width: auto;
+    height: 100%;
+}
+
+@keyframes loading_logo_animation {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
