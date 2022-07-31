@@ -1,0 +1,32 @@
+.wrapper {
+    height: 500px;
+    background-color: #c2deff;
+    padding: 5%;
+}
+
+.welcome_message {
+    width: 400px;
+    background: #ffffff;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.our {
+    color: #e7ab53;
+}
+
+.achievement {
+    color: #0052a7;
+}
+
+@media (max-width: 900px) {
+    .wrapper {
+        height: auto;
+    }
+
+    .welcome_card {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+}

@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+
+.achievement_wrapper {
+    width: 100%;
+    height: 500px;
+    background-color: white;
+}
+
+.title_section {
+    width: 100%;
+    height: 30%;
+    padding: 2%;
+    align-items: center;
+    font-family: Inter;
+}
+
+.card_section {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.achievement_border {
+    display: inline-block;
+    border-bottom: solid 3px #E7AB53;
+}
+
+.our {
+    color: #E7AB53;
+}
+
+.achievement {
+    color: #0052A7;
+}
+
+.achievement_card {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+}

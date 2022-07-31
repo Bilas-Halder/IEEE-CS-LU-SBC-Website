@@ -1,0 +1,129 @@
+:root {
+    --theme: #E7AB53;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: initial;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ieee-logo {
+    width: auto;
+    height: 80px;
+}
+
+
+.itemName {
+    color: #000 !important;
+    font-weight: 500;
+    position: relative;
+}
+
+.itemName::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 5%;
+    height: 2px;
+    width: 90%;
+    background-color: var(--theme);
+    transition: all 0.2s ease-in;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.itemTag:hover .itemName::after,
+.itemName:hover::after {
+
+    transform: scaleX(1);
+}
+
+
+.pill-fill-btn {
+    display: inline-block;
+    cursor: pointer;
+    padding: 1.2rem 2rem 1.2rem 2rem;
+    border: 3px solid var(--theme);
+    border-radius: 2rem;
+    background-color: var(--theme);
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 0px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pill-fill-btn:hover {
+    background-color: white;
+    color: var(--theme);
+    text-decoration: none;
+}
+
+.pill-border-btn {
+    display: inline-block;
+    cursor: pointer;
+    padding: 1.2rem 2rem 1.2rem 2rem;
+    border: 3px solid var(--theme);
+    border-radius: 2rem;
+    background-color: White;
+    color: var(--theme);
+    font-size: 1.1rem;
+    line-height: 0px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pill-border-btn:hover {
+    background-color: var(--theme);
+    color: white;
+    text-decoration: none;
+}
+
+
+
+/* changing bootstrap class css (navbar-toggler) && not recommended */
+.navbar-toggler {
+    border: none;
+    font-size: 2rem;
+}
+
+.menu-icons {
+    position: relative;
+}
+
+.ham-hide {
+    transform: scale(0, 0);
+}
+
+.ham-menu,
+.ham-close {
+    transition: all 0.2s ease-in;
+}
+
+.ham-close {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.navbar-toggler:focus {
+    border: none;
+    box-shadow: none;
+}
+
+
+@media (max-width: 992px) {
+    .ieee-logo {
+        height: 60px;
+    }
+}

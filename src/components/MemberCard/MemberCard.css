@@ -1,0 +1,392 @@
+.cardContainer {
+    width: 300px;
+    height: auto;
+    margin: 10px;
+}
+
+.memCard {
+    width: 100%;
+    height: auto;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 2px solid #4f82bdc7;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.memID {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+    background: #4f82bd;
+    background: linear-gradient(90deg, #276098 0%, #5c93d1 100%);
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+.memTooltip {
+    padding: 0px;
+    font-size: 0.8rem;
+}
+
+/* Card Image Circle Part */
+.memImgCon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.circle {
+    position: relative;
+    width: 190px;
+    height: 190px;
+    transform: rotate(-160deg);
+}
+
+.circle circle {
+    width: 180px;
+    height: 180px;
+
+    fill: none;
+    stroke: black;
+    stroke-dasharray: 565px;
+    stroke-dashoffset: 565px;
+
+    transform: translate(5px, 5px);
+}
+
+.circle circle:nth-child(1) {
+    stroke-width: 3px;
+    stroke: #E7AB53;
+    stroke-dashoffset: 0px;
+}
+
+.circle circle:nth-child(2) {
+    width: 190px;
+    height: 190px;
+
+    stroke-width: 4px;
+    stroke: #4f82bd;
+    stroke-dashoffset: 200px;
+}
+
+.circleAnimation {
+    position: relative;
+    transition: 0.3s ease-in;
+}
+
+/* Small Circles on the top of circle border */
+.smallCircle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.smallCircle circle {
+    width: 20px;
+    height: 20px;
+}
+
+.cir1 {
+    fill: #f9bb5e;
+    left: -5px;
+    top: 70px;
+}
+
+.cir2 {
+    fill: #f9bb5e;
+    left: -4.5px;
+    top: 100px;
+}
+
+.cir3 {
+    fill: #f9bb5e;
+    left: 6.5px;
+    top: 130px;
+}
+
+.cir4 {
+    fill: #4f82bd;
+    left: 90px;
+    bottom: -6.5px;
+}
+
+.cir5 {
+    fill: #4f82bd;
+    left: 60px;
+    bottom: -2.5px;
+}
+
+.cir6 {
+    fill: #4f82bd;
+    left: 30px;
+    bottom: 13.5px;
+}
+
+/* Card Image Part */
+.memCardImgCon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in;
+}
+
+.memCardImage {
+    width: 175px;
+    height: 175px;
+
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Card Mid Part */
+.cardName {
+    text-align: center;
+    padding: 10px 20px 0px 20px;
+}
+
+.cardName h3 {
+    font-size: 1.7rem;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+.cardName p {
+    margin: 0px;
+}
+
+.memDescription {
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 10px 20px 15px 20px;
+    min-height: 60px;
+}
+
+/* Bottom Part */
+.memBottomCon {
+    width: 100%;
+    background-color: #4f82bdc7;
+    border-radius: 25px/20px;
+    padding-top: 8px;
+
+    background: #4f82bd;
+    background: linear-gradient(90deg, #276098 0%, #5c93d1 100%);
+
+    position: absolute;
+    bottom: -45px;
+    transition: all 0.3s ease-in;
+}
+
+
+.memBottom {
+    width: 100%;
+    background-color: white;
+    height: auto;
+    padding: 0px 20px 15px 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.memBottomContent {
+    width: 100%;
+    height: 100px;
+    padding: 0px 0px 5px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    transform: scale(1, 0);
+    transform-origin: bottom;
+    transition: all 0.3s ease-in;
+}
+
+.memPassingYear,
+.memBatch {
+    width: 49%;
+    display: block;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.memPassingYear span,
+.memBatch span {
+    display: block;
+    font-size: 1rem;
+}
+
+.memVerLine {
+    width: 2px;
+    background-color: #4f82bdc7;
+    height: 55px;
+}
+
+
+/* Social Icon Buttons */
+.memBottomIcons {
+    width: 100%;
+    padding: 18px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 99999;
+}
+
+.socialIconBtn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    margin: 0px 8px;
+    border-radius: 10px;
+    /* border-radius: 50%; */
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all 0.3s ease-in;
+    z-index: 200;
+}
+
+.socialIconBtn::after {
+    content: "";
+    position: absolute;
+    top: 26px;
+    left: -33px;
+    width: 120%;
+    height: 120%;
+    background-color: white;
+    border-radius: 3px;
+    transform: rotate(45deg);
+    z-index: 201;
+}
+
+.socialIconBtn svg {
+    z-index: 203;
+    margin-top: 2px;
+    transition: transform 0.3s ease-in;
+}
+
+
+.linkedinIcon {
+    color: white;
+    background-color: #0A66C2;
+}
+
+.githubIcon,
+.emailIcon {
+    color: white;
+    background-color: #333;
+}
+
+.githubIcon svg {
+    margin-top: 5px;
+}
+
+.emailIcon {
+    font-size: 19px;
+}
+
+.facebookIcon {
+    color: white;
+    background-color: #3b5998;
+}
+
+
+/* ALL Hover Effect */
+.memCard:hover .memBottomContent {
+    transform: scale(1, 1);
+}
+
+.memCard:hover .circleAnimation {
+    transform: rotate(180deg) scale(1.1);
+}
+
+.memCard:hover .memCardImgCon {
+    transform: scale(1.07);
+}
+
+.memCard:hover .hoverEffectBottom {
+    bottom: 30px;
+}
+
+/* ---------------- */
+
+.socialIconBtn:hover {
+    transform: scale(1.1);
+}
+
+.socialIconBtn:hover svg {
+    transform: scale(1.3);
+}
+
+.socialIconBtn:hover::after {
+    animation: iconBtnAni 0.6s ease-in forwards;
+}
+
+.githubIcon:hover,
+.emailIcon:hover {
+    color: #333;
+}
+
+.linkedinIcon:hover {
+    color: #0A66C2;
+}
+
+.facebookIcon:hover {
+    color: #3b5998;
+}
+
+/* ---------------- */
+
+@keyframes iconBtnAni {
+    0% {
+        top: 22px;
+        left: -28px;
+        transform: rotate(45deg);
+    }
+
+    50% {
+        top: -17px;
+        left: 10px;
+        transform: rotate(45deg);
+    }
+
+    100% {
+        top: -3px;
+        left: -2px;
+        transform: rotate(45deg) scale(1.1);
+    }
+}

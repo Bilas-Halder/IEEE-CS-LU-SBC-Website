@@ -1,0 +1,128 @@
+.wrapper {
+    padding: 5%;
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.events_wrapper {
+    width: 60%;
+    height: 500px;
+}
+
+.news_wrapper {
+    width: 35%;
+    height: 500px;
+    overflow-y: scroll;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.event_card {
+    height: auto;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.news_card {
+    height: auto;
+    border-radius: 10px;
+}
+
+.images {
+    border-radius: 10px !important;
+}
+
+.our {
+    color: #e7ab53;
+}
+
+.achievement {
+    color: #0052a7;
+}
+
+.border_bottom {
+    margin-bottom: 3rem;
+    display: inline-block;
+    border-bottom: solid 2px #e7ab53;
+}
+
+.listed_news {
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.listed_news:hover {
+    background-color: #c2deff66;
+}
+
+.news_thumbnail {
+    width: 70%;
+    height: auto;
+}
+
+.news_thumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+
+.news_title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0px;
+    margin-left: 0.5rem;
+}
+
+
+/*Scroll Bar */
+
+/* width */
+.news_wrapper::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+/* Track */
+.news_wrapper::-webkit-scrollbar-track {
+    border-radius: 100px;
+    background: #a7a0a0;
+}
+
+/* Handle */
+.news_wrapper::-webkit-scrollbar-thumb {
+    background: #0052a7;
+    border-radius: 100px;
+}
+
+
+
+@media (max-width: 900px) {
+    .wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .events_wrapper {
+        width: auto;
+        height: auto;
+        margin-bottom: 10%;
+    }
+
+    .news_wrapper {
+        width: auto;
+        height: 500px;
+        margin-bottom: 5%;
+    }
+}
+
+@media (max-width: 576px) {
+    .news_thumbnail {
+        width: 100%;
+    }
+}

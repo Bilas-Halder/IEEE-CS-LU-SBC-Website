@@ -1,0 +1,54 @@
+.wrapper {
+    height: 500px;
+    background: linear-gradient(99.85deg,
+            rgba(231, 171, 83, 0.27) 0%,
+            rgba(0, 82, 167, 0.27) 100%);
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome_message {
+    width: 400px;
+    background: #ffffff;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.our {
+    color: #e7ab53;
+}
+
+.faqs h1 {
+    margin-bottom: 1rem;
+}
+
+.faqs_blue_color {
+    color: #0052a7;
+}
+
+.border_bottom {
+    display: inline-block;
+    border-bottom: solid 2px #e7ab53;
+}
+
+@media (max-width: 900px) {
+    .wrapper {
+        height: auto;
+    }
+
+    .welcome_card {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 2rem;
+    }
+
+    .dropdown_question {
+        width: 100%;
+    }
+
+    .faqs {
+        width: 100%;
+    }
+}
