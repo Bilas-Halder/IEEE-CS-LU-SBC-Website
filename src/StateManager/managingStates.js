@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AuthModalToggle = (props) => {
+const useManagingStates = (props) => {
 
     const [signInModalToggle, setSignInModalToggle] = useState(false);
     const [joinUsModalToggle, setJoinUsInModalToggle] = useState(false);
@@ -13,4 +13,4 @@ const AuthModalToggle = (props) => {
     }
 };
 
-export default AuthModalToggle;
+export default useManagingStates;

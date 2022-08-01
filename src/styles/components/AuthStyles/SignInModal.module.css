@@ -1,7 +1,12 @@
 .signIn_modal {
     background: #ffffff;
     box-shadow: 4px 4px 50px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 1rem !important;
 
+}
+
+.modal_radius {
+    border-radius: 1rem !important;
 }
 
 .input_box {
@@ -84,19 +89,31 @@ p {
 .hr_line_container {
     display: flex;
     justify-content: center;
-    margin-top: -40px;
+}
+
+.hr_line_box {
+
+    display: flex;
+
+    width: 35%;
+    height: 4px;
+    background-color: aquamarine;
+
+    overflow: hidden;
 }
 
 .hr_line_yel {
     display: inline-block;
-    width: 15%;
-    border-bottom: solid 4px #E7AB53;
+    width: 50%;
+    height: 4px;
+    background-color: #E7AB53;
 }
 
 .hr_line_blu {
     display: inline-block;
-    width: 15%;
-    border-bottom: solid 4px #0052A7;
+    width: 50%;
+    height: 4px;
+    background-color: #0052A7;
 }
 
 .modall {

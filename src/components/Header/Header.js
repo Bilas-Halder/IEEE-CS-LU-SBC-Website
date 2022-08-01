@@ -6,14 +6,14 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import SignInModal from '../AuthModals/SignInModal';
 import JoinUsModal from '../AuthModals/JoinUsModal';
+import useAuth from '../../StateManager/useAuth';
 
-import AuthModalToggle from '../../states/AuthModalToggle';
 
 const Header = (props) => {
 
     const [isMenu, setIsMenu] = useState(true);
 
-    const { signInModalToggle, setSignInModalToggle, joinUsModalToggle, setJoinUsInModalToggle } = AuthModalToggle();
+    const { signInModalToggle, setSignInModalToggle, joinUsModalToggle, setJoinUsInModalToggle } = useAuth();
 
     const toggleMenuIcons = () => {
         setIsMenu(!isMenu);

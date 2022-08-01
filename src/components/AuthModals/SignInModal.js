@@ -3,7 +3,7 @@ import styles from "../../styles/components/AuthStyles/SignInModal.module.css";
 import React, { useState } from "react";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 
-import AuthModalToggle from "../../states/AuthModalToggle";
+import useAuth from "../../StateManager/useAuth";
 
 const SignInModal = (props) => {
     const [error, setError] = useState({});
@@ -13,7 +13,7 @@ const SignInModal = (props) => {
         password: "",
     });
 
-    const { signInModalToggle, setSignInModalToggle, joinUsModalToggle, setJoinUsInModalToggle } = AuthModalToggle();
+    const { signInModalToggle, setSignInModalToggle, joinUsModalToggle, setJoinUsInModalToggle } = useAuth();
 
     const setField = (field, value) => {
         console.log(field, value);
@@ -66,8 +66,9 @@ const SignInModal = (props) => {
             {...props}
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            contentClassName={styles.modal_radius}
         >
-            <h1 className="fs-1 fw-bold text-center mt-4 mb-5">
+            <h1 className="fs-1 fw-bold text-center mt-4 mb-3">
                 {" "}
                 <span className={styles.sign_title}>Sign</span>{" "}
                 <span className={styles.in_title}>In</span>{" "}
@@ -76,8 +77,11 @@ const SignInModal = (props) => {
             {/* horizontal line er code  */}
 
             <div className={styles.hr_line_container}>
-                <div className={styles.hr_line_yel}> </div>
-                <div className={styles.hr_line_blu}> </div>
+
+                <div className={styles.hr_line_box}>
+                    <div className={styles.hr_line_yel}> </div>
+                    <div className={styles.hr_line_blu}> </div>
+                </div>
             </div>
             {/*  */}
 

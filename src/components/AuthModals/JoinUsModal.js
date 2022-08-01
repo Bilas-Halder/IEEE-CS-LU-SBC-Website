@@ -91,8 +91,9 @@ const JoinUsModal = (props) => {
             {...props}
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            contentClassName={styles.modal_radius}
         >
-            <h1 className="fs-1 fw-bold text-center mt-4 mb-5">
+            <h1 className="fs-1 fw-bold text-center mt-4 mb-3">
                 {" "}
                 <span className={styles.sign_title}>Join</span>{" "}
                 <span className={styles.in_title}>Us</span>{" "}
@@ -100,9 +101,13 @@ const JoinUsModal = (props) => {
 
             {/* horizontal line er code  */}
 
+
             <div className={styles.hr_line_container}>
-                <div className={styles.hr_line_yel}> </div>
-                <div className={styles.hr_line_blu}> </div>
+
+                <div className={styles.hr_line_box}>
+                    <div className={styles.hr_line_yel}> </div>
+                    <div className={styles.hr_line_blu}> </div>
+                </div>
             </div>
             {/*  */}
 
