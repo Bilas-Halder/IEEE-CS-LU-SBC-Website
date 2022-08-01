@@ -1,0 +1,105 @@
+.signIn_modal {
+    background: #ffffff;
+    box-shadow: 4px 4px 50px 1px rgba(0, 0, 0, 0.15);
+
+}
+
+.input_box {
+    border-radius: 50px !important;
+    background: rgba(255, 255, 255, 0.53);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.pass_input_box {
+    padding-right: 40px;
+
+    border-radius: 50px !important;
+    background: rgba(255, 255, 255, 0.53);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.pass_eye {
+    position: absolute;
+    right: 15px;
+    top: 52%;
+    height: 30px;
+    width: 25px;
+    color: #0052A7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.forget_pass {
+    display: flex;
+    justify-content: end;
+}
+
+.signIn_btn {
+    background: #E7AB53;
+    border-radius: 50px;
+    border: 0;
+    height: 45px;
+    width: 150px;
+    font-size: large;
+    font-weight: 600;
+    color: white;
+}
+
+.joinUs_btn {
+    background: #0052A7;
+    border-radius: 50px;
+    border: 0;
+    height: 45px;
+    width: 150px;
+    font-size: large;
+    font-weight: 600;
+    color: white;
+}
+
+.login_with_container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+p {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.sign_title {
+    color: #1D2226D9;
+    display: inline-block;
+    padding-bottom: 13px;
+}
+
+.in_title {
+    color: #1D2226D9;
+    display: inline-block;
+    padding-bottom: 13px;
+}
+
+.hr_line_container {
+    display: flex;
+    justify-content: center;
+    margin-top: -40px;
+}
+
+.hr_line_yel {
+    display: inline-block;
+    width: 15%;
+    border-bottom: solid 4px #E7AB53;
+}
+
+.hr_line_blu {
+    display: inline-block;
+    width: 15%;
+    border-bottom: solid 4px #0052A7;
+}
+
+.modall {
+    width: 600px;
+    margin: auto;
+}

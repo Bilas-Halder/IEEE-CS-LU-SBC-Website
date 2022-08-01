@@ -4,10 +4,16 @@ import { GrMenu, GrClose } from 'react-icons/gr';
 import Logo from '../../images/logo.png';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import SignInModal from '../AuthModals/SignInModal';
+import JoinUsModal from '../AuthModals/JoinUsModal';
+
+import AuthModalToggle from '../../states/AuthModalToggle';
 
 const Header = (props) => {
 
     const [isMenu, setIsMenu] = useState(true);
+
+    const { signInModalToggle, setSignInModalToggle, joinUsModalToggle, setJoinUsInModalToggle } = AuthModalToggle();
 
     const toggleMenuIcons = () => {
         setIsMenu(!isMenu);
@@ -72,12 +78,17 @@ const Header = (props) => {
                         </Nav>
 
                         <div className="d-flex justify-content-around">
-                            <Nav.Link onClick={toggleMenuIcons} href="joinus" className='px-0'><div className="pill-fill-btn mx-3">
+                            <Nav.Link onClick={toggleMenuIcons} className='px-0'><div className="pill-fill-btn mx-3" onClick={() => {
+                                setJoinUsInModalToggle(true);
+                            }}>
                                 JoinUs
                             </div></Nav.Link>
 
-                            <Nav.Link onClick={toggleMenuIcons} href="/signin" className='px-0'>
-                                <div className="pill-border-btn me-3" >
+                            <Nav.Link onClick={toggleMenuIcons} className='px-0'>
+                                <div className="pill-border-btn me-3"
+                                    onClick={() => {
+                                        setSignInModalToggle(true);
+                                    }}>
                                     SignIn
                                 </div>
                             </Nav.Link>
@@ -87,6 +98,19 @@ const Header = (props) => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            {signInModalToggle ? (
+                <SignInModal
+                    show={signInModalToggle}
+                    onHide={() => setSignInModalToggle(false)}
+                />
+            ) : null}
+            {joinUsModalToggle ? (
+                <JoinUsModal
+                    show={joinUsModalToggle}
+                    onHide={() => setJoinUsInModalToggle(false)}
+                />
+            ) : null}
         </>
     );
 };
