@@ -44,7 +44,7 @@ const Header = (props) => {
 
                             <NavDropdown title={<span className='text-dark' >Activities</span>} id="basic-nav-dropdown" className='itemName'>
                                 <Link to='/events'>
-                                    <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.1" >Events</NavDropdown.Item></Link>
+                                    <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.1" to='/events'>Events</NavDropdown.Item></Link>
 
                                 <Link to='/news'>
                                     <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.2">News</NavDropdown.Item></Link>
@@ -62,12 +62,22 @@ const Header = (props) => {
                             </NavDropdown>
 
                             <NavDropdown title={<span className='text-dark' >About</span>} id="basic-nav-dropdown" className='itemName'>
-                                <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.1" >IEEE</NavDropdown.Item>
-                                <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.2">IEEE R10 (Region 10)</NavDropdown.Item>
-                                <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.2">IEEE Bangladesh Section</NavDropdown.Item>
-                                <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.2">IEEE LU Student Branch</NavDropdown.Item>
+                                <Link to='/about/ieee'>
+                                    <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.1" >IEEE</NavDropdown.Item>
+                                </Link>
+                                <Link to='/about/ieee-r10'>
+                                    <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.2">IEEE R10 (Region 10)</NavDropdown.Item>
+                                </Link>
+                                <Link to='/about/ieee-bs'>
+                                    <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.2">IEEE Bangladesh Section</NavDropdown.Item>
+                                </Link>
+                                <Link to='/about/ieee-lu-sb'>
+                                    <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.2">IEEE LU Student Branch</NavDropdown.Item>
+                                </Link>
+                                <Link to='/about/ieee-cs-lu-sbc'>
 
-                                <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.3">IEEE LU Student Branch Chapter</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={toggleMenuIcons} href="action/3.3">IEEE LU Student Branch Chapter</NavDropdown.Item>
+                                </Link>
                             </NavDropdown>
 
 

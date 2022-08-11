@@ -1,0 +1,26 @@
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 200px;
+    background: linear-gradient(90deg, #0b1180 0%, #2e85a0 100%);
+}
+
+.title {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: center;
+}
+.achievement_border {
+    display: inline-block;
+    border-bottom: solid 3px #e7ab53;
+}
+.our {
+    color: #e7ab53;
+}
+
+.achievement {
+    color: #0052a7;
+}

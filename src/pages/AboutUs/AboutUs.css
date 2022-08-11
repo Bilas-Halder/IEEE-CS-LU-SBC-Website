@@ -1,0 +1,30 @@
+.bg-style {
+    background-image: url('../../images/Rectangle.png');
+    height: 264px;
+    margin-top: 10%;
+    padding: 30px 200px;
+}
+
+.ieee {
+    color: #F8D389;
+    font-weight: 700;
+}
+
+.about-section {
+    margin-top: 100px;
+}
+
+.gap-between-rows {
+    margin-top: 150px;
+}
+
+.heading {
+    display: inline;
+    border-bottom: 2px solid black;
+}
+
+@media screen and (max-width: 500px) {
+    .bg-style {
+        padding: 50px 10px;
+    }
+}
