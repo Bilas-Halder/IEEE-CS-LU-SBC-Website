@@ -1,15 +1,15 @@
-import React from 'react';
-import Logo from '../../images/logo.png';
-import './Loading.css';
+import React from "react";
+import Logo from "../../images/logo.png";
+import "./Loading.css";
 
-const componentName = (props) => {
+const LoadingPage = (props) => {
     return (
-        <div className='d-flex justify-content-center loading_logo'>
-            <div className='img_container'>
+        <div className="d-flex justify-content-center loading_logo">
+            <div className="img_container">
                 <img src={Logo} alt="" />
             </div>
         </div>
     );
 };
 
-export default componentName;
+export default LoadingPage;

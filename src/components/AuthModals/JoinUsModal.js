@@ -1,90 +1,151 @@
-import { Modal, Container, Form } from "react-bootstrap";
+import {Modal, Container, Form} from "react-bootstrap";
 import styles from "../../styles/components/AuthStyles/SignInModal.module.css";
-import React, { useState } from "react";
-import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+import React, {useState} from "react";
+import {BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs";
+import useAuth from "../../StateManager/useAuth";
+import {useNavigate} from "react-router-dom";
+import {SweetModalPopup} from "../../utilities/SweetModalPopup";
 
 const JoinUsModal = (props) => {
-
+    let navigate = useNavigate();
     const [error, setError] = useState({});
     const [showPass, setShowPass] = useState(false);
     const [formData, setFormData] = useState({
-        first_name: "",
-        last_name: "",
+        name: "",
         email: "",
         password: "",
-        confirm_password: "",
+        confirmPassword: "",
     });
+
+    const {
+        signInModalToggle,
+        setSignInModalToggle,
+        joinUsModalToggle,
+        setJoinUsInModalToggle,
+        liveLink,
+        postData,
+        setAccessToken,
+        setToLS,
+        setMember,
+        setLoading,
+        loading,
+    } = useAuth();
 
     const setField = (field, value) => {
         console.log(field, value);
-        setFormData({ ...formData, [field]: value });
+        setFormData({...formData, [field]: value});
         if (error[field]) {
-            setError({ ...error, [field]: false });
+            setError({...error, [field]: false});
         }
-    }
+    };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        validate();
-        console.log(formData);
-        console.log(error);
-    }
+        const validated = validate();
+
+        if (validated) {
+            console.log(formData);
+            const url = liveLink + "/members/signup";
+            await postData(url, formData)
+                .then((data) => {
+                    console.log(data);
+                    setLoading(false);
+                    if (data.errors) {
+                        const keys = Object.keys(data.errors);
+                        console.log(keys);
+                        for (let i = 0; i < keys.length; i++) {
+                            const err = data.errors[keys[i]];
+
+                            error[keys[i]] = err.msg;
+                        }
+
+                        setError({...error});
+                    } else {
+                        SweetModalPopup({
+                            title: "Sign Up Successful!",
+                            text: data?.msg,
+                            icon: "success",
+                            showCancelButton: true,
+                            confirmButtonColor: "#d33",
+                            cancelButtonColor: "#3085d6",
+                            confirmButtonText: "Resend",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                const url =
+                                    liveLink +
+                                    "/members/verifyEmail/" +
+                                    data?.data?.email;
+                                console.log(`url -> ${url} `);
+
+                                fetch(url)
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        SweetModalPopup({
+                                            title: "We Resend You a Verification Mail!",
+                                            text: data.msg,
+                                            icon: "success",
+                                        }).then((result) => {
+                                            setJoinUsInModalToggle(false);
+                                        });
+                                    });
+                            } else {
+                                setJoinUsInModalToggle(false);
+                            }
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    setLoading(false);
+                });
+        }
+    };
 
     const validate = () => {
-        const { first_name, last_name, email, password, confirm_password } = formData;
+        const {name, email, password, confirmPassword} = formData;
 
-        const keys = Object.keys(formData);
-        console.log(keys);
+        let isValidated = true;
 
         // first name
-        if (/^[A-Za-z ]+$/.test(first_name)) {
-            error.first_name = false;
-        }
-        else if (first_name.length < 3) {
-            error.first_name = 'First Name must be at least 3 characters long';
-        }
-        else {
-            error.first_name = 'First Name must be alphabets and only';
-        }
-
-        // last name
-        if (/^[A-Za-z ]+$/.test(last_name)) {
-            error.last_name = false;
-        }
-        else if (last_name.length < 3) {
-            error.last_name = 'Last Name must be at least 3 characters long';
-        }
-        else {
-            error.last_name = 'Last Name must be alphabets and only';
+        if (/^[A-Za-z ]+$/.test(name)) {
+            error.name = false;
+        } else if (name.length < 3) {
+            isValidated = false;
+            error.name = "First Name must be at least 3 characters long";
+        } else {
+            isValidated = false;
+            error.name = "First Name must be alphabets and only";
         }
 
         // email
         if (/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(email)) {
             error.email = false;
-        }
-        else {
-            error.email = 'Email is not valid';
+        } else {
+            isValidated = false;
+            error.email = "Email is not valid";
         }
 
         // password
-        if (/^[A-Za-z @$!%*#;?&\d]{6,10}$/.test(password)) {
+        if (/^[A-Za-z @$!%*#;?&\d]{6,20}$/.test(password)) {
             error.password = false;
 
-            if (password !== confirm_password) {
-                error.confirm_password = 'Passwords do not match';
+            if (password !== confirmPassword) {
+                isValidated = false;
+                error.confirmPassword = "Passwords do not match";
             }
-        }
-        else if (password.length < 6) {
-            error.password = 'Password must be at least 6 characters long';
-        }
-        else {
-            error.password = 'Password can contain only alphabets, numbers and @$!%*#?& characters';
+        } else if (password.length < 6) {
+            error.password = "Password must be at least 6 characters long";
+            isValidated = false;
+        } else {
+            error.password =
+                "Password can contain only alphabets, numbers and @$!%*#?& characters";
+            isValidated = false;
         }
 
+        setError({...error});
 
-
-        setError({ ...error });
-    }
+        return isValidated;
+    };
 
     return (
         <Modal
@@ -94,17 +155,21 @@ const JoinUsModal = (props) => {
             contentClassName={styles.modal_radius}
         >
             <h1 className="fs-1 fw-bold text-center mt-4 mb-3">
-                {" "}
-                <span className={styles.sign_title}>Join</span>{" "}
-                <span className={styles.in_title}>Us</span>{" "}
+                <span className={styles.sign_title}>
+                    {loading ? "Joining..." : "Join US"}
+                </span>
             </h1>
 
             {/* horizontal line er code  */}
 
-
             <div className={styles.hr_line_container}>
-
-                <div className={styles.hr_line_box}>
+                <div
+                    className={
+                        loading
+                            ? styles.hr_line_loading_box
+                            : styles.hr_line_box
+                    }
+                >
                     <div className={styles.hr_line_yel}> </div>
                     <div className={styles.hr_line_blu}> </div>
                 </div>
@@ -113,43 +178,26 @@ const JoinUsModal = (props) => {
 
             <Modal.Body className={styles.signIn_modal}>
                 <Container>
-                    <Form noValidate className="mx-auto" style={{ width: "80%" }}>
+                    <Form noValidate className="mx-auto" style={{width: "80%"}}>
                         <Form.Group
                             className="mb-3"
                             controlId="formBasicFirstName"
                         >
                             <Form.Label className="text-muted">
-                                First Name
+                                Full Name
                             </Form.Label>
                             <Form.Control
                                 className={styles.input_box}
-                                name="first_name"
+                                name="name"
                                 type="name"
                                 placeholder=""
-                                onChange={(e) => setField("first_name", e.target.value)}
-                                isInvalid={error.first_name}
+                                onChange={(e) =>
+                                    setField("name", e.target.value)
+                                }
+                                isInvalid={error.name}
                             />
                             <Form.Control.Feedback type="invalid">
-                                {error.first_name}
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="formBasicLastName"
-                        >
-                            <Form.Label className="text-muted">
-                                Last Name
-                            </Form.Label>
-                            <Form.Control
-                                className={styles.input_box}
-                                name="last_name"
-                                type="name"
-                                placeholder=""
-                                onChange={(e) => setField("last_name", e.target.value)}
-                                isInvalid={error.last_name}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                {error.last_name}
+                                {error.name}
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -161,7 +209,9 @@ const JoinUsModal = (props) => {
                                 name="email"
                                 type="email"
                                 placeholder=""
-                                onChange={(e) => setField("email", e.target.value)}
+                                onChange={(e) =>
+                                    setField("email", e.target.value)
+                                }
                                 isInvalid={error.email}
                             />
 
@@ -169,8 +219,6 @@ const JoinUsModal = (props) => {
                                 {error.email}
                             </Form.Control.Feedback>
                         </Form.Group>
-
-
 
                         <Form.Group
                             className="mb-3 position-relative"
@@ -184,20 +232,26 @@ const JoinUsModal = (props) => {
                                 name="password"
                                 type={showPass ? "text" : "password"}
                                 placeholder=""
-                                onChange={(e) => setField("password", e.target.value)}
+                                onChange={(e) =>
+                                    setField("password", e.target.value)
+                                }
                                 isInvalid={error.password}
                             />
                             <Form.Control.Feedback type="invalid">
                                 {error.password}
                             </Form.Control.Feedback>
-                            {
-                                error.password ? null : <span
+                            {error.password ? null : (
+                                <span
                                     className={styles.pass_eye}
                                     onClick={() => setShowPass(!showPass)}
                                 >
-                                    {showPass ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+                                    {showPass ? (
+                                        <BsFillEyeSlashFill />
+                                    ) : (
+                                        <BsFillEyeFill />
+                                    )}
                                 </span>
-                            }
+                            )}
                         </Form.Group>
 
                         <Form.Group
@@ -209,21 +263,27 @@ const JoinUsModal = (props) => {
                             </Form.Label>
                             <Form.Control
                                 className={styles.pass_input_box}
-                                name="confirm_password"
+                                name="confirmPassword"
                                 type={showPass ? "text" : "password"}
                                 placeholder=""
-                                onChange={(e) => setField("confirm_password", e.target.value)}
-                                isInvalid={error.confirm_password}
+                                onChange={(e) =>
+                                    setField("confirmPassword", e.target.value)
+                                }
+                                isInvalid={error.confirmPassword}
                             />
 
                             <Form.Control.Feedback type="invalid">
-                                {error.confirm_password}
+                                {error.confirmPassword}
                             </Form.Control.Feedback>
                             <span
                                 className={styles.pass_eye}
                                 onClick={() => setShowPass(!showPass)}
                             >
-                                {error.confirm_password ? null : showPass ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+                                {error.confirmPassword ? null : showPass ? (
+                                    <BsFillEyeSlashFill />
+                                ) : (
+                                    <BsFillEyeFill />
+                                )}
                             </span>
                         </Form.Group>
 

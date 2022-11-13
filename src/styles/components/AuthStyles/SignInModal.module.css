@@ -2,7 +2,6 @@
     background: #ffffff;
     box-shadow: 4px 4px 50px 1px rgba(0, 0, 0, 0.15);
     border-radius: 1rem !important;
-
 }
 
 .modal_radius {
@@ -29,7 +28,7 @@
     top: 52%;
     height: 30px;
     width: 25px;
-    color: #0052A7;
+    color: #0052a7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +41,7 @@
 }
 
 .signIn_btn {
-    background: #E7AB53;
+    background: #e7ab53;
     border-radius: 50px;
     border: 0;
     height: 45px;
@@ -53,7 +52,7 @@
 }
 
 .joinUs_btn {
-    background: #0052A7;
+    background: #0052a7;
     border-radius: 50px;
     border: 0;
     height: 45px;
@@ -66,7 +65,6 @@
 .login_with_container {
     display: flex;
     justify-content: space-between;
-
 }
 
 p {
@@ -75,13 +73,13 @@ p {
 }
 
 .sign_title {
-    color: #1D2226D9;
+    color: #1d2226d9;
     display: inline-block;
     padding-bottom: 13px;
 }
 
 .in_title {
-    color: #1D2226D9;
+    color: #1d2226d9;
     display: inline-block;
     padding-bottom: 13px;
 }
@@ -89,16 +87,21 @@ p {
 .hr_line_container {
     display: flex;
     justify-content: center;
+    height: 4px;
+}
+.hr_line_loading_box {
+    display: flex;
+    width: 35%;
+    height: 4px;
+    overflow: hidden;
+
+    animation: leftRightLoading 2s ease infinite;
 }
 
 .hr_line_box {
-
     display: flex;
-
     width: 35%;
     height: 4px;
-    background-color: aquamarine;
-
     overflow: hidden;
 }
 
@@ -106,17 +109,35 @@ p {
     display: inline-block;
     width: 50%;
     height: 4px;
-    background-color: #E7AB53;
+    background-color: #e7ab53;
 }
 
 .hr_line_blu {
     display: inline-block;
     width: 50%;
     height: 4px;
-    background-color: #0052A7;
+    background-color: #0052a7;
 }
 
 .modall {
     width: 600px;
     margin: auto;
+}
+
+@keyframes leftRightLoading {
+    0% {
+        transform: translateX(-90%);
+    }
+    /* 25% {
+        transform: translateX(90%);
+    } */
+    50% {
+        transform: translateX(90%);
+    }
+    /* 75% {
+        transform: translateX(-90%);
+    } */
+    100% {
+        transform: translateX(-90%);
+    }
 }
