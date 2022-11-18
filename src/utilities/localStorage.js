@@ -2,7 +2,14 @@ export const setToLS = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
 };
 export const getFromLS = (key) => {
-    return JSON.parse(localStorage.getItem(key));
+    const data = localStorage.getItem(key);
+    console.log(data);
+    if (data !== undefined) {
+        console.log(data);
+        return JSON.parse(data);
+    } else {
+        return {};
+    }
 };
 
 export const getAccessToken = () => {

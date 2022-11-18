@@ -1,0 +1,49 @@
+.img_cropper_modal {
+    padding: 0;
+}
+.img_cropper_modal_body {
+    width: 100%;
+    /* height: 500px; */
+    padding: 0px;
+}
+.cropper_wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+.cropper_activities {
+    width: 100%;
+    padding: 10% 10% 5% 10%;
+}
+.cropper_zoom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+}
+.cancel_btn,
+.done_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    height: 30px;
+    padding: 0px 2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.cancel_btn {
+    color: #9c042a;
+    background-color: white;
+    border: 2px solid #9c042a;
+}
+.done_btn {
+    color: white;
+    background-color: #04519c;
+    border: 2px solid #04519c;
+}

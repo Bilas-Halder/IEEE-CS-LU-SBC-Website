@@ -32,7 +32,6 @@ const SignInModal = (props) => {
     } = useAuth();
 
     const setField = (field, value) => {
-        // console.log(field, value);
         setFormData({...formData, [field]: value});
         if (error[field]) {
             setError({...error, [field]: false});
@@ -41,7 +40,6 @@ const SignInModal = (props) => {
 
     const handleSignIn = (e) => {
         e.preventDefault();
-        console.log("clicking join us");
         setSignInModalToggle(!signInModalToggle);
         setJoinUsInModalToggle(!joinUsModalToggle);
     };
@@ -61,6 +59,7 @@ const SignInModal = (props) => {
                         if (data?.verified) {
                             setAccessToken(data.accessToken);
                             setToLS("member", data);
+                            console.log(data);
                             navigate("/");
                             setSignInModalToggle(false);
                             setMember(data);
@@ -78,7 +77,7 @@ const SignInModal = (props) => {
                                     const url =
                                         liveLink +
                                         "/members/verifyEmail/" +
-                                        data?.data?.email;
+                                        data?.email;
                                     console.log(`url -> ${url} `);
 
                                     fetch(url)
@@ -236,19 +235,20 @@ const SignInModal = (props) => {
                         <div className="mt-5 mb-4 d-flex justify-content-around">
                             <div>
                                 <button
+                                    className={styles.joinUs_btn}
+                                    onClick={handleSignIn}
+                                >
+                                    Join Us
+                                </button>
+                            </div>
+
+                            <div>
+                                <button
                                     className={styles.signIn_btn}
                                     type="submit"
                                     onClick={handleSubmit}
                                 >
                                     Sign In
-                                </button>
-                            </div>
-                            <div>
-                                <button
-                                    className={styles.joinUs_btn}
-                                    onClick={handleSignIn}
-                                >
-                                    Join Us
                                 </button>
                             </div>
                         </div>

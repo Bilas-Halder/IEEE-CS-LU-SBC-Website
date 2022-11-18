@@ -146,7 +146,7 @@ const Header = (props) => {
                                 </Nav.Link>
                             </Link>
                             {member.email && (
-                                <Link to={`/profile/${member._id}`}>
+                                <Link to={`/profile/${member.email}`}>
                                     <Nav.Link href="/" className="itemName">
                                         {member.name}
                                     </Nav.Link>

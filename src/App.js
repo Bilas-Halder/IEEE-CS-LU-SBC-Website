@@ -1,17 +1,18 @@
 import HomePage from "./pages/Home/HomePage";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {ToastContainer} from "react-toastify";
 
 import EventPage from "./pages/Events/EventPage";
 import DynamicEvent from "./pages/Events/DynamicEvent";
 import Header from "./components/Header/Header";
 import MembersPage from "./pages/Members/MembersPage";
-import MemberSearch from "./pages/Members/MemberSearch";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ContextProvider from "./StateManager/ContextProvider";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import {LoadedRoute} from "./utilities/RouterRelated";
+import {LoadedRoutes, ProtectedRoutes} from "./utilities/RouterRelated";
 import AuthPage from "./pages/AuthPages/AuthPage";
+import ProfilePage from "./pages/Profile/ProfilePage";
 
 function App() {
     return (
@@ -20,7 +21,7 @@ function App() {
                 <ScrollToTop />
                 <Header />
                 <Routes>
-                    <Route element={<LoadedRoute />}>
+                    <Route element={<LoadedRoutes />}>
                         <Route path="/" element={<HomePage />}></Route>
 
                         <Route
@@ -66,9 +67,16 @@ function App() {
                         />
                         <Route path="/gallery" element={<EventPage />} />
                     </Route>
+                    <Route element={<ProtectedRoutes />}>
+                        <Route
+                            path="/profile/:email"
+                            element={<ProfilePage />}
+                        ></Route>
+                    </Route>
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
+                <ToastContainer />
             </Router>
         </ContextProvider>
     );

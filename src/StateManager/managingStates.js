@@ -10,15 +10,29 @@ const useManagingStates = (props) => {
     const [signInModalToggle, setSignInModalToggle] = useState(false);
     const [joinUsModalToggle, setJoinUsInModalToggle] = useState(false);
     const [committeeMembersData, setCommitteeMembersData] = useState([]);
+
     const [loading, setLoading] = useState(false);
     const [member, setMember] = useState(() =>
         getFromLS("member") ? getFromLS("member") : {}
     );
+
+    const [profileEditMode, setProfileEditMode] = useState(false);
+    const [profileImgURL, setProfileImgURL] = useState(member?.imgURL);
+    const [profileUpdateFormData, setProfileUpdateFormData] = useState({});
+    const [profileImgFile, setProfileImgFile] = useState(null);
+    const [profileInputErrors, setProfileInputErrors] = useState({});
+
     const [autoCompleteData, setAutoCompleteData] = useState([]);
     const liveLinkDomain = "https://ieeecslusbc.onrender.com";
     // const liveLinkDomain = "http://localhost:5000";
     const liveLinkVersion = "/api/v1";
     const liveLink = liveLinkDomain + liveLinkVersion;
+
+    const updateMember = (newMemberData) => {
+        setAccessToken(newMemberData?.accessToken);
+        setMember(newMemberData);
+        setToLS("member", newMemberData);
+    };
 
     const postData = async (url, data) => {
         setLoading(true);
@@ -57,6 +71,17 @@ const useManagingStates = (props) => {
         logout,
         loading,
         setLoading,
+        profileEditMode,
+        setProfileEditMode,
+        profileUpdateFormData,
+        setProfileUpdateFormData,
+        profileImgURL,
+        setProfileImgURL,
+        profileImgFile,
+        setProfileImgFile,
+        updateMember,
+        profileInputErrors,
+        setProfileInputErrors,
     };
 };
 
